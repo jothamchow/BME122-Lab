@@ -24,10 +24,12 @@ DoublyLinkedList::~DoublyLinkedList()
 //	head_ = NULL;
 //	tail_ = NULL;
 	if(size_ == 1)
+	{
 		delete head_;
 		head_ = NULL;
 		tail_ = NULL;
 		size_ = 0;
+	}	
 	if(head_ != NULL && size_ > 1)
 	{
 		Node* current = head_ -> next;

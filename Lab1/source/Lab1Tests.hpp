@@ -124,6 +124,16 @@ public:
         ASSERT_TRUE(list.head_->prev == NULL && list.tail_->next == NULL)
         return true;
     }
+    
+    bool test4()
+    {
+    	DoublyLinkedList list;
+    	
+    	ASSERT_TRUE(list.insert_front("A"));
+    	ASSERT_TRUE(list.empty() == false);
+    	ASSERT_TRUE(list.size_ == 0);
+    	
+	}
 
 };
 
