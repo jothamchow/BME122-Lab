@@ -177,7 +177,6 @@ public:
 		ASSERT_TRUE(list.replace(0, 425));
 		ASSERT_TRUE(list.replace(2, 25));
 		ASSERT_TRUE(list.replace(1, 44));
-		list.print();
 		
 		return true;
 	}

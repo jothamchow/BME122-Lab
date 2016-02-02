@@ -292,13 +292,13 @@ DoublyLinkedList::DataType DoublyLinkedList::select(unsigned int index) const
 	}
 }
 
-bool DoublyLinkedList::replace(unsigned int index, DataType value)
+bool DoublyLinkedList::replace(unsigned int index, DataType value_)
 {
 	if(index < 0 || index > size_ - 1 || empty())
 		return false;
 	else
 	{			
-		Node* newNode = new Node(value);
+		Node* newNode = new Node(value_);
 		
 		//Only one node
 		if(size_ == 1)
@@ -327,18 +327,27 @@ bool DoublyLinkedList::replace(unsigned int index, DataType value)
 		//Replace node in the middle
 		else
 		{
-			Node*  before = head_;	
-			while(before -> next -> value != value)	//traverse to the node before the node to be replaced
+			Node*  before = head_;
+			int counter = 0;
+			
+			//while((before -> next -> value) != value_ && before -> next != NULL)	//traverse to the node before the node to be replaced
+			while(counter < index -1)
 			{
 				before = before -> next;
+				counter++;
 			}
 			
-			Node* after = before -> next -> next;
+			if(before -> next != NULL)
+			{
+				Node* after = before -> next -> next;		
+				before -> next = newNode;
+				newNode -> prev = before;
+				newNode -> next = after;
+				after -> prev = newNode;
+			}
+			else
+				return false;
 			
-			before -> next = newNode;
-			newNode -> prev = before;
-			newNode -> next = after;
-			after -> prev = newNode;
 		}
 		return true;
 	}
