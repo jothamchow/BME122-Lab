@@ -19,10 +19,6 @@ DoublyLinkedList::DoublyLinkedList()
 
 DoublyLinkedList::~DoublyLinkedList()
 {
-//	delete head_;
-//	delete tail_;
-//	head_ = NULL;
-//	tail_ = NULL;
 	if(size_ == 1)
 	{
 		delete head_;
@@ -279,7 +275,9 @@ unsigned int DoublyLinkedList::search(DataType value) const
 
 DoublyLinkedList::DataType DoublyLinkedList::select(unsigned int index) const
 {
-	if(index > size_ - 1 || index < 0)
+	if(empty())
+		return -1;
+	else if(index > size_ - 1 || index < 0)
 		return (tail_ -> value);
 	else
 	{
@@ -296,14 +294,22 @@ DoublyLinkedList::DataType DoublyLinkedList::select(unsigned int index) const
 
 bool DoublyLinkedList::replace(unsigned int index, DataType value)
 {
-	if(index < 0 || index > size_ - 1)
+	if(index < 0 || index > size_ - 1 || empty())
 		return false;
 	else
 	{			
 		Node* newNode = new Node(value);
 		
+		//Only one node
+		if(size_ == 1)
+		{
+			delete head_;
+			head_ = newNode;
+			tail_ = newNode;
+		}
+		
 		//Replace first node
-		if(index == 0)
+		else if(index == 0)
 		{
 			newNode -> next = head_ -> next;
 			head_ -> next -> prev = newNode;
