@@ -24,7 +24,7 @@ int main()
     bool linked_test4_passed = linked_test.test4();
     bool linked_test5_passed = linked_test.test5();
     bool linked_test6_passed = linked_test.test6();
-//    bool linked_test7_passed = linked_test.test7();
+    bool linked_test7_passed = linked_test.test7();
 //    bool linked_test8_passed = linked_test.test8();
 //    bool linked_test9_passed = linked_test.test9();
 //    bool linked_test10_passed = linked_test.test10();
@@ -41,10 +41,10 @@ int main()
     cout << "Test4: " << get_status_str(linked_test4_passed) << endl;
     cout << "Test5: " << get_status_str(linked_test5_passed) << endl;
     cout << "Test6: " << get_status_str(linked_test6_passed) << endl;
-//    cout << "Test7: " << get_status_str(linked_test6_passed) << endl;
-//    cout << "Test8: " << get_status_str(linked_test6_passed) << endl;
-//    cout << "Test9: " << get_status_str(linked_test6_passed) << endl;
-//    cout << "Test10: " << get_status_str(linked_test6_passed) << endl;
+    cout << "Test7: " << get_status_str(linked_test7_passed) << endl;
+//    cout << "Test8: " << get_status_str(linked_test8_passed) << endl;
+//    cout << "Test9: " << get_status_str(linked_test9_passed) << endl;
+//    cout << "Test10: " << get_status_str(linked_test10_passed) << endl;
   
 
     system("pause");

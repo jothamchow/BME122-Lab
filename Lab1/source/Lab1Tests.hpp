@@ -183,7 +183,26 @@ public:
 	
 	bool test7() //full list
 	{
+		DoublyLinkedList list;
 		
+		for(int i = 0; i < list.CAPACITY; i++)
+		{
+			ASSERT_TRUE(list.insert_back(i));
+		}
+		ASSERT_FALSE(list.insert(2, 3));
+		ASSERT_FALSE(list.insert_front(1));
+		ASSERT_FALSE(list.insert_back(1));
+		ASSERT_TRUE(list.size_ == list.CAPACITY)
+		ASSERT_TRUE(list.full());
+		ASSERT_TRUE(list.replace(0, -1));
+		ASSERT_TRUE(list.replace(list.CAPACITY - 1, -1));
+		ASSERT_TRUE(list.replace(1, -2));
+		ASSERT_TRUE(list.replace(list.CAPACITY - 2, -1));
+		ASSERT_TRUE(list.replace(100, -1));
+		ASSERT_FALSE(list.replace(-1, 123));
+		ASSERT_FALSE(list.replace(list.CAPACITY, 123));
+		
+		return true;
 	}
 
 };
