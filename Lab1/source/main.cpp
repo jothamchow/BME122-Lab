@@ -45,7 +45,6 @@ int main()
 //    cout << "Test8: " << get_status_str(linked_test8_passed) << endl;
 //    cout << "Test9: " << get_status_str(linked_test9_passed) << endl;
 //    cout << "Test10: " << get_status_str(linked_test10_passed) << endl;
-  
 
     system("pause");
 }

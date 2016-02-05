@@ -4,7 +4,7 @@ using namespace std;
 
 SequentialList::SequentialList(unsigned int cap)
 {
-	DataType* seq_list = new DataType[cap];	
+	DataType* seq_list = new DataType[cap];
 	
 	if(seq_list == NULL)
 		cout << "Error: Cannot initialize list." << endl;
@@ -19,7 +19,7 @@ SequentialList::SequentialList(unsigned int cap)
 
 SequentialList::~SequentialList()
 {
-	delete data_;
+	delete[] data_;
 	data_ = NULL;
 }
 
@@ -51,11 +51,12 @@ bool SequentialList::full() const
 
 void SequentialList::print() const
 {
-	cout << "The list has " << size_ << "elements: " << endl;
+	cout << "The list has " << size_ << " element(s): " << endl << "[ ";
 	for(int i = 0; i < size_; i++)
 	{
-		cout << data_[i];
+		cout << data_[i] << " ";
 	}
+	cout << "]" << endl;
 }
 
 bool SequentialList::insert_front(DataType val)

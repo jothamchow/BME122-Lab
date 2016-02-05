@@ -64,7 +64,6 @@ void DoublyLinkedList::print() const
 	{
 		Node* current;
 		current = head_;
-		cout << "Printing: " << endl;
 		while(current -> next != NULL)
 		{
 			cout << current -> value << " --> ";
