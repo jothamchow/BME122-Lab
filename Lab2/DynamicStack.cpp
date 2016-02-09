@@ -33,10 +33,13 @@ bool DynamicStack::empty() const
 {
 	if(size_ == 0)
 		return true;
+	else
+		return false;
 }
 
 int DynamicStack::size() const
 {
+	return size_;
 }
 
 void DynamicStack::push(StackItem value)
@@ -49,8 +52,18 @@ StackItem DynamicStack::pop()
 
 StackItem DynamicStack::peek() const
 {
+	if(empty())
+		return EMPTY_STACK;
+	else
+		return items_[size_ - 1];
 }
 
 void DynamicStack::print() const
 {
+	cout << "[ ";
+	for(int i = 0; i < size_; i++)
+	{
+		cout << items_[i] << " ";
+	}
+	cout << "]" << endl;
 }
