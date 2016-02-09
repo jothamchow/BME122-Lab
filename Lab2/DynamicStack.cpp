@@ -1,7 +1,11 @@
 #include "DynamicStack.hpp"
+#include <iostream>
+using namespace std;
 
 typedef DynamicStack::StackItem StackItem;  // for simplicity
 const StackItem DynamicStack::EMPTY_STACK = -999;
+
+
 
 DynamicStack::DynamicStack()
 {
