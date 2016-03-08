@@ -17,6 +17,7 @@ public:
       DynamicStack default_size_stack;
       ASSERT_TRUE(default_size_stack.empty() == true)
       ASSERT_TRUE(default_size_stack.size() == 0)    
+      ASSERT_TRUE(default_size_stack.capacity_ == 16);
 
       DynamicStack stack(size);
       ASSERT_TRUE(stack.empty() == true)
@@ -48,6 +49,40 @@ public:
       ASSERT_TRUE(stack.peek() == DynamicStack::EMPTY_STACK)
       return true;
     }
+    
+    bool test4()
+    {
+    	DynamicStack stack(10);
+    	for(int i = 0; i < 10; i++)
+    	{
+    		stack.push(i);
+		}
+		ASSERT_TRUE(stack.size() == 10);
+		ASSERT_TRUE(stack.capacity_ == 10);
+		stack.push(10);
+		ASSERT_TRUE(stack.size() == 11);
+		ASSERT_TRUE(stack.capacity_ == 20);
+		for(int i = 10; i >= 0; i--)
+		{
+			ASSERT_TRUE(stack.pop() == i);
+			ASSERT_TRUE(stack.size() == i);
+		}
+		ASSERT_TRUE(stack.size() == 0);
+		ASSERT_TRUE(stack.capacity_ == 10);
+		ASSERT_TRUE(stack.pop() == stack.EMPTY_STACK);
+		ASSERT_TRUE(stack.size() == 0);
+		
+		for(int i = 0; i < 1000; i++)
+		{
+			stack.push(i);
+		}
+		ASSERT_TRUE(stack.size() == 1000);
+		ASSERT_TRUE(stack.capacity_ == 1280);
+		ASSERT_TRUE(stack.peek() == 999);
+		ASSERT_TRUE(stack.size() == 1000);
+		ASSERT_TRUE(stack.pop() == 999);
+		
+	}
 
 };
 
@@ -102,6 +137,11 @@ public:
       ASSERT_TRUE((queue.tail_ == 2) || (queue.tail_ == 3))
       return true;
     }
+    
+    bool test4()
+    {
+    	CircularQueue queue(10);
+	}
 
 };
 
