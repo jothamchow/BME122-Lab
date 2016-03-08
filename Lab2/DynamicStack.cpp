@@ -17,6 +17,8 @@ DynamicStack::DynamicStack()
 
 DynamicStack::DynamicStack(unsigned int capacity)
 {
+	if(capacity == 0)
+		capacity = 16;
 	items_ = new StackItem[capacity];
 	size_ = 0;
 	capacity_ = capacity;
@@ -72,7 +74,7 @@ StackItem DynamicStack::pop()
 	else
 	{
 		size_--;
-		
+		StackItem popped = items_[size_];
 		if(size_ <= capacity_/4 && capacity_/2 >= init_capacity_)
 		{
 			capacity_ /= 2;
@@ -81,9 +83,10 @@ StackItem DynamicStack::pop()
 			{
 				newStack[i] = items_[i];
 			}
+			delete items_;
 			items_ = newStack;
 		}
-		return items_[size_];
+		return popped;
 	}
 }
 

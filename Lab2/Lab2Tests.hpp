@@ -80,9 +80,170 @@ public:
 		ASSERT_TRUE(stack.capacity_ == 1280);
 		ASSERT_TRUE(stack.peek() == 999);
 		ASSERT_TRUE(stack.size() == 1000);
-		ASSERT_TRUE(stack.pop() == 999);
-		
+
+		for(int i = 999; i >= 0; i--)	
+		{
+			ASSERT_TRUE(stack.pop() == i);
+		}
+		return true;
 	}
+	
+	bool test5()
+	{
+		DynamicStack stack2(0);
+		ASSERT_TRUE( stack2.capacity_== 16 );
+		ASSERT_TRUE( stack2.init_capacity_ == 16);
+		ASSERT_TRUE( stack2.size_ == 0);
+		stack2.~DynamicStack();
+		
+		DynamicStack stack3;
+		ASSERT_TRUE( stack3.capacity_== 16 );
+		ASSERT_TRUE( stack3.init_capacity_ == 16);
+		ASSERT_TRUE( stack3.size_ == 0);
+		stack3.~DynamicStack();
+		
+		DynamicStack stack(8);
+		ASSERT_TRUE( stack.capacity_== 8 );
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		ASSERT_TRUE( stack.size_ == 0);
+		
+		ASSERT_TRUE( stack.empty() == true);
+		ASSERT_TRUE( stack.pop() == -999);
+		ASSERT_TRUE( stack.size_ == 0);
+	
+		stack.push(10);
+		ASSERT_TRUE(stack.empty() == false);
+		ASSERT_TRUE(stack.size_ == 1);
+		ASSERT_TRUE(stack.peek() == 10);
+		
+		ASSERT_TRUE(stack.pop()== 10);
+		ASSERT_TRUE(stack.size_ == 0);
+		ASSERT_TRUE( stack.pop() == -999);
+		ASSERT_TRUE( stack.peek() == -999);
+		
+		stack.push(1);
+		stack.push(2);
+		ASSERT_TRUE( stack.size_ == 2);
+		stack.push(3);
+		ASSERT_TRUE( stack.peek() == 3);
+		stack.push(4);
+		ASSERT_TRUE( stack.size_ == 4);
+		ASSERT_TRUE( stack.pop() == 4);
+		ASSERT_TRUE( stack.peek() == 3);
+		ASSERT_TRUE( stack.size_ == 3);
+		stack.push(4);
+		ASSERT_TRUE( stack.size_ == 4);
+		stack.push(5);
+		ASSERT_TRUE( stack.peek() == 5);
+		stack.push(6);
+		stack.push(7);
+		stack.push(8);
+		ASSERT_TRUE( stack.peek() == 8);
+		ASSERT_TRUE( stack.capacity_== 8);
+		stack.push(9);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		ASSERT_TRUE( stack.capacity_== 16);
+		ASSERT_TRUE( stack.size_ == 9);
+		ASSERT_TRUE( stack.peek() == 9);
+		stack.push(10);
+		stack.push(11);
+		stack.push(12);
+		ASSERT_TRUE( stack.size_ == 12);
+		ASSERT_TRUE( stack.peek() == 12);
+		ASSERT_TRUE( stack.pop() == 12);
+		ASSERT_TRUE( stack.size_ == 11);
+		ASSERT_TRUE( stack.peek() == 11);
+		stack.push(12);
+		ASSERT_TRUE( stack.size_ == 12);
+		ASSERT_TRUE( stack.peek() == 12);
+		ASSERT_TRUE( stack.capacity_== 16);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 12);
+		ASSERT_TRUE( stack.size_ == 11);
+		ASSERT_TRUE( stack.peek() == 11);
+		
+		ASSERT_TRUE( stack.pop() == 11);
+		ASSERT_TRUE( stack.size_ == 10);
+		ASSERT_TRUE( stack.peek() == 10);
+		
+		ASSERT_TRUE( stack.pop() == 10);
+		ASSERT_TRUE( stack.size_ == 9);
+		ASSERT_TRUE( stack.peek() == 9);
+		
+		ASSERT_TRUE( stack.pop() == 9);
+		ASSERT_TRUE( stack.size_ == 8);
+		ASSERT_TRUE( stack.peek() == 8);
+		ASSERT_TRUE( stack.capacity_== 16);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 8);
+		ASSERT_TRUE( stack.size_ == 7);
+		ASSERT_TRUE( stack.peek() == 7);
+		ASSERT_TRUE( stack.capacity_== 16);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 7);
+		ASSERT_TRUE( stack.size_ == 6);
+		ASSERT_TRUE( stack.peek() == 6);
+		
+		ASSERT_TRUE( stack.pop() == 6);
+		ASSERT_TRUE( stack.size_ == 5);
+		ASSERT_TRUE( stack.peek() == 5);
+		ASSERT_TRUE( stack.capacity_== 16);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 5);
+		ASSERT_TRUE( stack.size_ == 4);
+		ASSERT_TRUE( stack.peek() == 4);
+		ASSERT_TRUE( stack.capacity_== 8);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		stack.push(5);
+		ASSERT_TRUE( stack.size_ == 5);
+		ASSERT_TRUE( stack.peek() == 5);
+		ASSERT_TRUE( stack.capacity_== 8);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 5);
+		ASSERT_TRUE( stack.size_ == 4);
+		ASSERT_TRUE( stack.peek() == 4);
+		ASSERT_TRUE( stack.capacity_== 8);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 4);
+		ASSERT_TRUE( stack.size_ == 3);
+		ASSERT_TRUE( stack.peek() == 3);
+		ASSERT_TRUE( stack.capacity_== 8);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 3);
+		ASSERT_TRUE( stack.size_ == 2);
+		ASSERT_TRUE( stack.peek() == 2);
+		ASSERT_TRUE( stack.capacity_== 8);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 2);
+		ASSERT_TRUE( stack.size_ == 1);
+		ASSERT_TRUE( stack.peek() == 1);
+		ASSERT_TRUE( stack.capacity_== 8);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.pop() == 1);
+		ASSERT_TRUE( stack.size_ == 0);
+		ASSERT_TRUE( stack.peek() == -999);
+		ASSERT_TRUE( stack.capacity_== 8);
+		ASSERT_TRUE( stack.init_capacity_ == 8);
+		
+		ASSERT_TRUE( stack.empty() == true);
+		ASSERT_TRUE( stack.pop() == -999);
+		ASSERT_TRUE( stack.peek() == -999);
+		ASSERT_TRUE( stack.size_ == 0);
+		
+		stack.~DynamicStack();
+		return true;
+	}
+
 
 };
 
@@ -141,6 +302,7 @@ public:
     bool test4()
     {
     	CircularQueue queue(10);
+    	//ASSERT_TRUE(queue.enqueue());
 	}
 
 };

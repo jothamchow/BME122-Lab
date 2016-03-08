@@ -18,6 +18,7 @@ int main()
     bool stack_test2_passed = stack_test.test2();
     bool stack_test3_passed = stack_test.test3();
 	bool stack_test4_passed = stack_test.test4();
+	bool stack_test5_passed = stack_test.test5();
 
     bool queue_test1_passed = queue_test.test1();
     bool queue_test2_passed = queue_test.test2();
@@ -29,6 +30,8 @@ int main()
     cout << "Test2: " << get_status_str(stack_test2_passed) << endl;
     cout << "Test3: " << get_status_str(stack_test3_passed) << endl;
     cout << "Test4: " << get_status_str(stack_test4_passed) << endl;
+    cout << "Test5: " << get_status_str(stack_test5_passed) << endl;
+    
 	cout << endl;
     cout << "---Circular Queue Tests---" << endl;
     cout << "Test1: " << get_status_str(queue_test1_passed) << endl;
