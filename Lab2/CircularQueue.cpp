@@ -59,10 +59,12 @@ bool CircularQueue::enqueue(QueueItem value)
 	{
 		if(empty())
 			head_++;
-		if(tail_ + 1 == capacity_)
+		if(tail_ + 1 > capacity_)
 			tail_ = 0;
+		items_[tail_] = value;
 		tail_++;
-		items_[tail_ - 1] = value;
+		if(tail_ == capacity_)
+			tail_ = 0;
 		size_++;
 		return true;
 	}

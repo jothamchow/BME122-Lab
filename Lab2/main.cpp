@@ -24,6 +24,12 @@ int main()
     bool queue_test2_passed = queue_test.test2();
     bool queue_test3_passed = queue_test.test3();
     bool queue_test4_passed = queue_test.test4();
+    bool queue_test5_passed = queue_test.test5();
+    bool queue_test6_passed = queue_test.test6();
+    bool queue_test7_passed = queue_test.test7();
+    bool queue_test8_passed = queue_test.test8();
+    bool queue_test9_passed = queue_test.test9();
+    bool queue_test10_passed = queue_test.test10();
 
     cout << "---Dynamic Stack Tests---" << endl;
     cout << "Test1: " << get_status_str(stack_test1_passed) << endl;
@@ -38,6 +44,14 @@ int main()
     cout << "Test2: " << get_status_str(queue_test2_passed) << endl;
     cout << "Test3: " << get_status_str(queue_test3_passed) << endl;
     cout << "Test4: " << get_status_str(queue_test4_passed) << endl;
+    cout << "Test5: " << get_status_str(queue_test5_passed) << endl;
+    cout << "Test6: " << get_status_str(queue_test6_passed) << endl;
+    cout << "Test7: " << get_status_str(queue_test7_passed) << endl;
+    cout << "Test8: " << get_status_str(queue_test8_passed) << endl;
+    cout << "Test9: " << get_status_str(queue_test9_passed) << endl;
+    cout << "Test10: " << get_status_str(queue_test10_passed) << endl;
+    
 
     system("pause");
 }
+
