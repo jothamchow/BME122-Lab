@@ -10,10 +10,20 @@ BinarySearchTree::BinarySearchTree()
 
 BinarySearchTree::~BinarySearch Tree();
 {
+	
 }
 
 bool BinarySearchTree::insert(Datatype val)
 {
+	if(!size)
+	{
+	}
+	else if()
+	{
+	}
+	else
+		return false;
+	
 }
 
 bool BinarySearchTree::remove(DataType val);
@@ -23,24 +33,28 @@ bool BinarySearchTree::exists(DataType val) const;
 {
 }
 
-DataType BinarySearchTree::BinarySearchTree::min() const;
+DataType BinarySearchTree::BinarySearchTree::min() const; //min val
+{
+	
+}
+
+DataType BinarySearchTree::BinarySearchTree::max() const; //max val
 {
 }
 
-DataType BinarySearchTree::BinarySearchTree::max() const;
+unsigned int BinarySearchTree::sBinarySearchTree::size() const; //# of nodes
 {
 }
 
-unsigned int BinarySearchTree::sBinarySearchTree::ize() const;
+unsigned int BinarySearchTree::depth() const; //max depth 
 {
-}
-
-unsigned int BinarySearchTree::depth() const;
-{
+	
 }
 
 void BinarySearchTree::print() const;
-	
+{
+}
+
 int BinarySearchTree::getNodeDepth(Node* n) const;
 	
 	Node* root_;
