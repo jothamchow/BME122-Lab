@@ -9,8 +9,8 @@ CursorRow=35
 TopLine=18
 LeftChar=1
 [Editors]
-Order=1,0,5,4,3,2
-Focused=4
+Order=
+Focused=-1
 [Editor_1]
 CursorCol=27
 CursorRow=33
