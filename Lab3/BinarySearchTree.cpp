@@ -3,14 +3,9 @@
 
 // Implement the functions here.
 
-#include "BinarySearchTree.hpp"
-
-
-// Implement the functions here.
-
 BinarySearchTree::BinarySearchTree()
 {
-	
+	//constructor	
 }
 
 BinarySearchTree::~BinarySearch Tree();
@@ -59,7 +54,7 @@ unsigned int BinarySearchTree::depth() const; //max depth
 void BinarySearchTree::print() const;
 {
 }
-	
+
 int BinarySearchTree::getNodeDepth(Node* n) const;
 	
 	Node* root_;
