@@ -135,8 +135,8 @@ bool SequentialList::insert(DataType val, unsigned int index)
 			}
 			
 			data_[index] = val;
-			size_++;
 		}
+		size_++;
 		return true;
 	}
 }
