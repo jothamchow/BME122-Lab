@@ -7,6 +7,8 @@ typedef BinarySearchTree::DataType DataType;
 BinarySearchTree::BinarySearchTree()
 {
 	root_ = NULL;
+	left = NULL;
+	right = NULL;
 	size_ = 0;
 }
 
@@ -22,6 +24,12 @@ bool BinarySearchTree::insert(DataType val)
 
 bool BinarySearchTree::remove(DataType val)
 {
+//	Node* visitor;
+//	visitor->root;
+//	if(val<root)
+//		visitor->left;
+//	else if(val>root)
+//		visiot->right;
 }
 bool BinarySearchTree::exists(DataType val) const
 {
