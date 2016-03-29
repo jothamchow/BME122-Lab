@@ -25,7 +25,6 @@ bool PriorityQueue::enqueue(DataType val)
 	int i = size_;
 	while(heap_[i/2] < heap_[i] && i != 1)
 	{
-		print();
 		DataType temp = heap_[i/2];
 		heap_[i/2] = heap_[i];
 		heap_[i] = temp;
@@ -36,18 +35,52 @@ bool PriorityQueue::enqueue(DataType val)
 
 bool PriorityQueue::dequeue()
 {
+	
+	
+	cout << "Before: ";
+	print();
+	
 	if(empty())
 		return false;
 		
 	heap_[size_] = heap_[1];
 	size_--;
 	
-	//TO DO
+	int i = 1;
+	int temp;
+	int a;
+	int b;
+	while(2*i < size_)
+	{
+		if(heap_[2*i] < heap_[2*i+1])
+		{
+			//swap with right child
+			a = heap_[i];
+			b = heap_[2*i+1];
+			
+			heap_[i] = b;
+			heap_[2*i+1] = a;
+			i = 2*i + 1;
+		}
+		else
+		{
+			//swap with left child
+			a = heap_[i];
+			b = heap_[2*i];
+			
+			heap_[i] = b;
+			heap_[2*i] = a;
+			i = 2*i;
+		}
+	}
+	cout << "After: ";
+	print();
+	return true;
 }
 
 DataType PriorityQueue::max() const
 {
-	cout<<heap_[1];
+	//cout << heap_[1];
 	return heap_[1];
 }
 
@@ -73,11 +106,11 @@ unsigned int PriorityQueue::size() const
 void PriorityQueue::print() const
 {
 	cout << "[ ";
-	for(int i = 1; i < size_; i++)
+	for(int i = 1; i <= size_; i++)
 	{
 		cout << heap_[i] << " ";
 	}	
-	cout << "]";
+	cout << "]" << endl;
 }
 
 

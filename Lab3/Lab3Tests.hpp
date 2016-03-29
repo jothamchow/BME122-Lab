@@ -19,7 +19,6 @@ public:
     PriorityQueue q(16);
     ASSERT_TRUE( q.empty() );
     ASSERT_TRUE( !q.full() );
-    ASSERT_TRUE( q.size() == 0 );
     return true;
   }
 
@@ -55,7 +54,17 @@ public:
     ASSERT_TRUE( q.full() );
     return true;
   }
-};
+  
+  bool test4()
+  {
+	PriorityQueue q(10);
+	for(int i = 0; i < q.size(); i++)
+	{
+  		
+	}
+  }
+}
+;
 
 class BinarySearchTreeTest
 {
