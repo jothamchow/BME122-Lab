@@ -1,73 +1,59 @@
 #include "BinarySearchTree.hpp"
+#include <iostream>
+
+using namespace std;
+typedef BinarySearchTree::DataType DataType;
 
 BinarySearchTree::BinarySearchTree()
 {
-	root_=null;
-	size_=1;
+	size_ = 0;
 }
 
-BinarySearchTree::~BinarySearch Tree();
+BinarySearchTree::~BinarySearchTree()
 {
-	root_=null;
-	size-=0;
+	delete root_;
+	root_ = NULL;
 }
 
-bool BinarySearchTree::insert(Datatype val)
+bool BinarySearchTree::insert(DataType val)
 {
-	if(!size)
-	{
-		
-	}
-	else if()
-	{
-	}
-	else
-		return false;
-	
 }
 
-bool BinarySearchTree::remove(DataType val);
+bool BinarySearchTree::remove(DataType val)
 {
 }
-bool BinarySearchTree::exists(DataType val) const;
+bool BinarySearchTree::exists(DataType val) const
 {
-	while()
-	if(!size_)
-		return false;
-	else if (val)
-		return true;
-	else
-		return false;
+
 }
 
-DataType BinarySearchTree::BinarySearchTree::min() const; //min val
+DataType BinarySearchTree::BinarySearchTree::min() const
 {
 	
 }
 
-DataType BinarySearchTree::BinarySearchTree::max() const; //max val
+DataType BinarySearchTree::BinarySearchTree::max() const
 {
 	
 }
 
-unsigned int BinarySearchTree::sBinarySearchTree::size() const; //# of nodes
-{
-	size_=0;
-}
-
-unsigned int BinarySearchTree::depth() const; //max depth 
+unsigned int BinarySearchTree::BinarySearchTree::size() const
 {
 	
 }
 
-void BinarySearchTree::print() const;
+unsigned int BinarySearchTree::depth() const
+{
+	
+}
+
+void BinarySearchTree::print() const
 {
 }
 
-int BinarySearchTree::getNodeDepth(Node* n) const;
+int BinarySearchTree::getNodeDepth(Node* n) const
+{
 	
-	Node* root_;
-	unsigned int size_;
-	
-BinarySearchTree(const BinarySearchTree& other) {}
-BinaryS0earchTree& operator=(const BinarySearchTree& other) {}
+}	
+
+
