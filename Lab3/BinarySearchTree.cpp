@@ -14,8 +14,8 @@ BinarySearchTree::BinarySearchTree()
 
 BinarySearchTree::~BinarySearchTree()
 {
-	delete root_;
-	root_ = NULL;
+	
+
 }
 
 bool BinarySearchTree::insert(DataType val)
@@ -63,7 +63,10 @@ unsigned int BinarySearchTree::BinarySearchTree::size() const
 
 unsigned int BinarySearchTree::depth() const
 {
-	
+	if(size() == 0)
+		return 0;
+	else
+		return getNodeDepth(root_);
 }
 
 void BinarySearchTree::print() const
