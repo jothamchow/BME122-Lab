@@ -7,6 +7,7 @@ typedef BinarySearchTree::DataType DataType;
 
 BinarySearchTree::BinarySearchTree()
 {
+	
 }
 
 BinarySearchTree::~BinarySearchTree()

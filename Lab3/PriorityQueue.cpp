@@ -35,15 +35,10 @@ bool PriorityQueue::enqueue(DataType val)
 
 bool PriorityQueue::dequeue()
 {
-	
-	
-	cout << "Before: ";
-	print();
-	
 	if(empty())
 		return false;
 		
-	heap_[size_] = heap_[1];
+	heap_[1] = heap_[size_];
 	size_--;
 	
 	int i = 1;
@@ -73,8 +68,6 @@ bool PriorityQueue::dequeue()
 			i = 2*i;
 		}
 	}
-	cout << "After: ";
-	print();
 	return true;
 }
 
