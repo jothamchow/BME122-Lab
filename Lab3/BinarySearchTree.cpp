@@ -1,121 +1,208 @@
 #include "BinarySearchTree.hpp"
+#include <iostream>
+
+using namespace std;
+typedef BinarySearchTree::DataType DataType;
+
+BinarySearchTree::Node::Node(DataType newval)
+{
+	val = newval;
+	left = NULL;
+	right = NULL;
+}
 
 BinarySearchTree::BinarySearchTree()
 {
-	root_=NULL;
-	size_=0;
-	val;
-	left-> NULL;
-	right-> NULL; 
+
+	root_ = NULL;
+	size_ = 0;
 }
 
-BinarySearchTree::~BinarySearch Tree();
+BinarySearchTree::~BinarySearchTree()
 {
+	RecursiveDestructor(root_);
+	root_ = NULL;
+}
+
+public static void RecursiveDestructor(Node* root_)
+{
+	if(root_ != NULL)
+		RecursiveDestructor(root_ -> left);
+		RecursiveDestructor(root_ -> right);
 	delete root_;
-	delete size_;
 }
 
-bool BinarySearchTree::insert(Datatype val)
+bool BinarySearchTree::insert(DataType newVal)
 {
-	Node* newNode = new Node(val);
-	
-	if(size_==0)
+	Node* newNode = new Node(newVal);
+	if(size() == 0)
 	{
-		root_->newNode;
+		root_ = newNode;
+		size_++;
 		return true;
-	}
+	}		
+	else if(exists(newVal))
+		return false;
 	else
 	{
-		Node* visitor;
-		visitor->root;
-		
-		if(val==visitor->value)
+		Node* parent = root_;
+		Node* newNode = new Node(newVal);
+		while(parent -> left != NULL || parent -> right != NULL)
 		{
-			return false;
+			if(newVal < parent->val && parent -> left != NULL)
+				parent = parent -> left;
+			else if (newVal > parent->val && parent -> right != NULL)
+				parent = parent -> right;
+			else
+				break;
 		}
-		else if(val<visitor->value)
-		{
-			visitor->left;
-		}
-		else //(val>current)
-		{
-			visitor->right;
-		}
-	}
-
-}
-
-bool BinarySearchTree::remove(DataType val);
-{
-	Node* visitor;
-	visitor->root;
-	
-	if(val==visitor->value)
-		delete visitor->value;
-	else 
-	{
-		if(val<visitor->value)
-		{
-			node->left;
-		}
-		else //(val>visitor->value)
-		{
-			node->right;
-		}
-	}
-	return false;//if val not found 
-}
-bool BinarySearchTree::exists(DataType val) const;
-{
-	Node* visitor;
-	visitor->root;
-	
-	if(val==visitor->value)
+		if(newVal < parent->val)
+			parent -> left = newNode;
+		else if (newVal >= parent->val)
+			parent -> right = newNode;
+		size_++;
 		return true;
-	else 
-	{
-		if(val<visitor->value)
-		{
-			visitor->left;
-		}
-		else 
-		{
-			visitor->right;
-		}
 	}
-	return false;
+
 }
 
-DataType BinarySearchTree::BinarySearchTree::min() const; //min val
+bool BinarySearchTree::remove(DataType delVal)
 {
-	int minVal = root_->data;
-	for(Node* visitor= node ; visitor!=NULL; visitor=visitor->left)
-	{
-		if(visitor->data > minVal)
-		minVal = visitor->data;
+	if(!exists(delVal))
+		return false;
+	else
+	{		
+		Node* parent;
+		Node* toDel = root_;
+		
+		// Traverse to node to be deleted and carry pointer to parent along with it
+		while(toDel -> val != delVal)
+		{
+			parent = toDel;
+			if(delVal >= toDel -> val)
+				toDel = toDel -> right;
+			else if(delVal < toDel -> val)
+				toDel = toDel -> left;
+		}
+		
+		// Case 1: toDel is a leaf
+		if(toDel -> right == NULL && toDel -> left == NULL)
+		{
+			if(parent -> left == toDel)
+				parent -> left = NULL;
+			else if(parent -> right == toDel)
+				parent -> right = NULL;
+			delete toDel;
+			
+		}
+		// Case 2: toDel only has one child
+		else if(toDel -> right == NULL && toDel -> left != NULL)
+		{
+			if(parent -> left == toDel)
+				parent -> left = toDel -> left;
+			else if(parent -> right == toDel)
+				parent -> right = toDel -> left;
+			delete toDel;
+		}
+		else if(toDel -> left == NULL && toDel -> right != NULL)
+		{
+			if(parent -> left == toDel)
+				parent -> left = toDel -> right;
+			else if(parent -> right == toDel)
+				parent -> right = toDel -> right;
+			delete toDel;
+		}
+		// Case 3: toDel has two children
+		else
+		{
+			// Find lowest node in right subtree
+			Node* lowest = toDel -> right;
+			while(lowest -> left != NULL)
+				lowest = lowest -> left;
+			
+			////Store lowest value
+			int parentVal = lowest -> val;
+		
+			
+			// Delete lowest
+			remove(lowest -> val);
+			
+			// Store lowest value in parent
+			parent -> val = parentVal;
+			
+	
+//			if(parent -> right == toDel && toDel -> left == NULL)
+//				parent -> right = toDel -> right;
+//			else if(parent -> right == toDel && toDel -> right == NULL)
+//				parent -> right = toDel -> left;
+//			else if(parent -> left == toDel && toDel -> left == NULL)
+//				parent -> left = toDel -> right;
+//			else if(parent -> left == toDel && toDel -> right == NULL)
+//				parent -> left = toDel -> left;
+//			delete toDel;
+//			remove(lowest -> val);
+//			parent -> val = parentVal;
+		
+		}
+		
+		size_--;
+		return true;
 	}
-	return minVal; 
 }
-
-DataType BinarySearchTree::BinarySearchTree::max() const; //max val
+bool BinarySearchTree::exists(DataType searchVal) const
 {
-	int maxVal = root_->data;
-	for(Node* visitor= node ; visitor!=NULL; visitor=visitor->right)
+	Node* currentNode = root_;
+	if(size() == 0)
+		return false;
+	else if((root_ -> val) ==  searchVal)
+		return true;
+	else
 	{
-		if(visitor->data >maxVal)
-		maxVal = visitor->data;
+		
+		while(currentNode != NULL)
+		{
+			if (searchVal == currentNode -> val)
+				return true;
+			else if(searchVal < currentNode -> val)
+				currentNode = currentNode -> left;
+			else if(searchVal > currentNode -> val)
+				currentNode = currentNode -> right;
+		}
+		return false;
 	}
-	return maxVal; 
 }
 
-unsigned int BinarySearchTree::sBinarySearchTree::size() const; //# of nodes
+DataType BinarySearchTree::BinarySearchTree::min() const
+{
+	Node* currentNode = root_;
+	while(currentNode -> left != NULL)
+	{
+		currentNode = currentNode -> left;
+	}
+	return (currentNode -> val);
+}
+
+DataType BinarySearchTree::BinarySearchTree::max() const
+{
+	Node* currentNode = root_;
+	while(currentNode -> right != NULL)
+	{
+		currentNode = currentNode -> right;
+	}
+	return (currentNode -> val);
+}
+
+unsigned int BinarySearchTree::BinarySearchTree::size() const
 {
 	return size_;
 }
 
-unsigned int BinarySearchTree::depth() const; //max depth 
+unsigned int BinarySearchTree::depth() const
 {
-	
+	if(size() == 0)
+		return 0;
+	else
+		return getNodeDepth(root_);
 }
 
 void BinarySearchTree::print() const; //in order 
@@ -141,10 +228,17 @@ void BinarySearchTree::print() const; //in order
 		return false; 
 }
 
-int BinarySearchTree::getNodeDepth(Node* n) const;
-	
-	Node* root_;
-	unsigned int size_;
-	
-BinarySearchTree(const BinarySearchTree& other) {}
-BinaryS0earchTree& operator=(const BinarySearchTree& other) {}
+int BinarySearchTree::getNodeDepth(Node* n) const
+{
+	if(n == NULL)
+		return 0;
+	while(n -> left != NULL || n -> right != NULL)
+	{
+		if(getNodeDepth(n -> left) < getNodeDepth(n->right))
+			return (1 + getNodeDepth(n -> right));
+		else
+			return (1 + getNodeDepth(n -> left));
+	}
+}	
+
+
