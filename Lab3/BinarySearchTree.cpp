@@ -2,11 +2,11 @@
 
 BinarySearchTree::BinarySearchTree()
 {
-	root_=null;
-	size_=1;
+	root_=NULL;
+	size_=0;
 	val;
-	left-> null;
-	right-> null; 
+	left-> NULL;
+	right-> NULL; 
 }
 
 BinarySearchTree::~BinarySearch Tree();
@@ -17,42 +17,79 @@ BinarySearchTree::~BinarySearch Tree();
 
 bool BinarySearchTree::insert(Datatype val)
 {
-	Node* visitor;
+	Node* newNode = new Node(val);
 	
-	if(val==val)
+	if(size_==0)
 	{
-		return false;
+		root_->newNode;
+		return true;
 	}
 	else
 	{
-		return true;
+		Node* visitor;
+		visitor->root;
+		
+		if(val==visitor->value)
+		{
+			return false;
+		}
+		else if(val<visitor->value)
+		{
+			visitor->left;
+		}
+		else //(val>current)
+		{
+			visitor->right;
+		}
 	}
+
 }
 
 bool BinarySearchTree::remove(DataType val);
 {
 	Node* visitor;
 	visitor->root;
-	if(val<root)
-		visitor->left;
-	else if(val>root)
-		visiot->right;
+	
+	if(val==visitor->value)
+		delete visitor->value;
+	else 
+	{
+		if(val<visitor->value)
+		{
+			node->left;
+		}
+		else //(val>visitor->value)
+		{
+			node->right;
+		}
+	}
+	return false;//if val not found 
 }
 bool BinarySearchTree::exists(DataType val) const;
 {
-	while()
-	if(!size_)
-		return false;
-	else if (val)
+	Node* visitor;
+	visitor->root;
+	
+	if(val==visitor->value)
 		return true;
-	else
-		return false;
+	else 
+	{
+		if(val<visitor->value)
+		{
+			visitor->left;
+		}
+		else 
+		{
+			visitor->right;
+		}
+	}
+	return false;
 }
 
 DataType BinarySearchTree::BinarySearchTree::min() const; //min val
 {
 	int minVal = root_->data;
-	for(Node* visitor= node ;visitor!=NULL; visitor=visitor->left)
+	for(Node* visitor= node ; visitor!=NULL; visitor=visitor->left)
 	{
 		if(visitor->data > minVal)
 		minVal = visitor->data;
@@ -81,9 +118,27 @@ unsigned int BinarySearchTree::depth() const; //max depth
 	
 }
 
-void BinarySearchTree::print() const;
-{
-	
+void BinarySearchTree::print() const; //in order 
+{	
+	if(root !=NULL)
+	{
+		Node* visitor;
+		visitor->root_; 
+		
+		while(visitor->left !=NULL)
+		{
+			visitor->left;
+		}
+		cout << visitor->value << endl;
+		
+		while(visitor->right !=NULL)
+		{
+			visitor->right;
+		} 
+		cout << visitor->value << endl;
+	}
+	else
+		return false; 
 }
 
 int BinarySearchTree::getNodeDepth(Node* n) const;
