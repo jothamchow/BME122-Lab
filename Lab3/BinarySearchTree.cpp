@@ -76,9 +76,60 @@ bool BinarySearchTree::remove(DataType delVal)
 			else if(delVal < toDel -> val)
 				toDel = toDel -> left;
 		}
+		//Case 1: Deleting root
+		if(root_->val==delVal)
+		{
+			//If only root
+			if(root_->left == NULL || root_->right == NULL)
+			{
+				Node* tempRoot = NULL;
+				if(root_ -> left == NULL)
+					tempRoot = root_ -> right;
+				if(root_ -> right == NULL)
+					tempRoot = root_ -> left;
+				delete(root_);
+				root_ = tempRoot;
+				size_--;
+				return true;  
+			}
+			
+			else
+			{
+				Node* tempRoot = root_ -> left;
+				Node* parents = root_;
+				while(tempRoot-> right !=NULL)
+				{
+					parent = tempRoot;
+					tempRoot = tempRoot -> right;
+				}
+				if(parent->val==root_-> val)
+				{
+					root_ -> val = tempRoot -> val;
+					root_ -> left = tempRoot -> left;
+					delete(tempRoot);
+					size_--;
+					return true;
+				}
+				parents -> right = tempRoot -> left;
+				root_ ->val = tempRoot -> val;
+				delete (tempRoot);
+				size_--;
+				return true; 
+			}
+			
+		}
 		
-		// Case 1: toDel is a leaf
-		if(toDel -> right == NULL && toDel -> left == NULL)
+		//Case 1: Single element 
+		if(size_==1)
+		{
+			Node* toDelHold = root_;
+			delete(toDelHold);
+			root_=NULL;
+			size_--;
+			return true;
+		}
+		// Case 2: toDel is a leaf
+		else if(toDel -> right == NULL && toDel -> left == NULL)
 		{
 			if(parent -> left == toDel)
 				parent -> left = NULL;
@@ -87,7 +138,7 @@ bool BinarySearchTree::remove(DataType delVal)
 			delete toDel;
 			
 		}
-		// Case 2: toDel only has one child
+		// Case 3: toDel only has one child
 		else if(toDel -> right == NULL && toDel -> left != NULL)
 		{
 			if(parent -> left == toDel)
@@ -104,7 +155,7 @@ bool BinarySearchTree::remove(DataType delVal)
 				parent -> right = toDel -> right;
 			delete toDel;
 		}
-		// Case 3: toDel has two children
+		// Case 4: toDel has two children
 		else
 		{
 			// Find lowest node in right subtree
@@ -134,13 +185,12 @@ bool BinarySearchTree::remove(DataType delVal)
 //			delete toDel;
 //			remove(lowest -> val);
 //			parent -> val = parentVal;
-		
 		}
-		
 		size_--;
 		return true;
 	}
 }
+
 bool BinarySearchTree::exists(DataType searchVal) const
 {
 	Node* currentNode = root_;
@@ -223,6 +273,7 @@ void BinarySearchTree::print() const //in order
 //		return level_order_str.substr(0, level_order_str.size()-1);
 //	}
 }
+
 
 int BinarySearchTree::getNodeDepth(Node* n) const
 {
