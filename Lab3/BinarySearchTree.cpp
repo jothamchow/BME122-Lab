@@ -20,16 +20,8 @@ BinarySearchTree::BinarySearchTree()
 
 BinarySearchTree::~BinarySearchTree()
 {
-	RecursiveDestructor(root_);
-	root_ = NULL;
-}
-
-public static void RecursiveDestructor(Node* root_)
-{
-	if(root_ != NULL)
-		RecursiveDestructor(root_ -> left);
-		RecursiveDestructor(root_ -> right);
-	delete root_;
+	while(root_ != NULL)
+	remove(root_ -> val);
 }
 
 bool BinarySearchTree::insert(DataType newVal)
@@ -205,27 +197,31 @@ unsigned int BinarySearchTree::depth() const
 		return getNodeDepth(root_);
 }
 
-void BinarySearchTree::print() const; //in order 
+void BinarySearchTree::print() const //in order 
 {	
-	if(root !=NULL)
-	{
-		Node* visitor;
-		visitor->root_; 
-		
-		while(visitor->left !=NULL)
-		{
-			visitor->left;
-		}
-		cout << visitor->value << endl;
-		
-		while(visitor->right !=NULL)
-		{
-			visitor->right;
-		} 
-		cout << visitor->value << endl;
-	}
-	else
-		return false; 
+//	if (root_==NULL)
+//		return 0;
+//		
+//	std::stringstream ss;
+//	std::queue<BinarySearchTree::Node*> node_queue;
+//	node_queue.push(root);
+//	while(!node_queue.empty())
+//	{
+//		BinarySearchTree::Node* cur_node=node_queue.front();
+//		node_queue.pop();
+//		ss << cur_node->val <<" ";
+//		if(cur_node->left !=NULL)
+//		{
+//			node_queue.push(cur_node->left);
+//		}
+//		if (cur_node->right !=NULL)
+//		{
+//			node_queue.push(cur_node->right);
+//		}
+//		
+//		std::string leve_order_str = ss.str();
+//		return level_order_str.substr(0, level_order_str.size()-1);
+//	}
 }
 
 int BinarySearchTree::getNodeDepth(Node* n) const
